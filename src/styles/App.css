@@ -1,0 +1,32 @@
+:root {
+  --yellow: #EC983B;
+  --red: #E31C1B;
+  --dark: #443734;
+  --light: #717e8a;
+  --green: #6ab547;
+  --white: #f1f4f9;
+  --palido: #ccbbbb;
+  --alt-red: #bd4020;
+  --yellow-light: #ffc88a;
+  --background-palido: rgba(204, 187, 187, 0.5);
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-size: 62.5%;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--white);
+  display: grid;
+  place-items: center;
+  align-items: start;
+  width: 100%;
+}
+#app {
+  display: grid;
+  width: 100%;
+  height: 100vh;
+  place-items: center;
+}

@@ -1,0 +1,10 @@
+.LayoutWithBar {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.LayoutContent {
+  position: absolute;
+  left: 205px;
+  width: calc(100% - 205px);
+}

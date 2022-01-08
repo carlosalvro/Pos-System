@@ -1,0 +1,17 @@
+.AjustesDefault {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  width: 80%;
+}
+.AjustesDefault a {
+  font-size: 15px;
+  text-decoration: none;
+  font-weight: bold;
+  color: var(--dark);
+}
+.AjustesDefault a:hover {
+  text-decoration: underline;
+  color: var(--alt-red);
+}

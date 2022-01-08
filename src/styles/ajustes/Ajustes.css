@@ -1,0 +1,14 @@
+.Ajustes {
+  margin-top: 25px;
+  display: grid;
+  place-items: center;
+}
+.Ajustes-content {
+  height: 100%;
+  width: 100%;
+}
+.Ajustes-links {
+  position: fixed;
+  left: 212px;
+  top: 11px;
+}

@@ -1,0 +1,8 @@
+.login-container {
+  display: grid;
+  place-items: center;
+  width: 70%;
+  max-width: 480px;
+  height: 28%;
+  justify-items: stretch;
+}

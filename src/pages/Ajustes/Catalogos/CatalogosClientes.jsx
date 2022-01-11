@@ -3,7 +3,7 @@ import Table from "@components/Table"
 import useApi from '../../../hooks/useApi';
 import TableAlter from '../../../components/TableAlter';
 
-const API = "http://localhost:3001/api/clients";
+const API = "http://localhost:3001/api/";
 
 const columns = [
   {
@@ -51,7 +51,7 @@ const columns = [
 
 const CatalogosClientes = () => {
 
-  const clients = useApi(API);
+  const clients = useApi("clients");
   return (
     <React.Fragment>
       <h1>Clientes</h1>

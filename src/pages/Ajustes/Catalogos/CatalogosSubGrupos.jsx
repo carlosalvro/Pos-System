@@ -2,7 +2,6 @@ import React from 'react';
 import Table from "@components/Table"
 import useApi from '../../../hooks/useApi';
 
-const API = "http://localhost:3001/api/subgroups";
 const columns = [
   {
     field: "subgroupId",
@@ -28,7 +27,7 @@ const columns = [
 
 const CatalogosSubGrupos = () => {
 
-  const subgroups = useApi(API); 
+  const subgroups = useApi("subgroups"); 
 
   return (
     <React.Fragment >
@@ -45,5 +44,3 @@ const CatalogosSubGrupos = () => {
 }
 
 export default CatalogosSubGrupos;
-
-

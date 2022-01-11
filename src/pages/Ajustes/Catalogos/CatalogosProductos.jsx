@@ -2,7 +2,7 @@ import React from 'react';
 import Table from "@components/Table"
 import useApi from '../../../hooks/useApi';
 
-const API = "http://localhost:3001/api/products";
+const API = "http://localhost:3001/api/";
 
 const currencyFormatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -84,7 +84,7 @@ const columns = [
 ]
 
 const CatalogosProductos = () => {
-  const products = useApi(API);
+  const products = useApi("products");
   return (
     <React.Fragment>
       <h1>Productos</h1>

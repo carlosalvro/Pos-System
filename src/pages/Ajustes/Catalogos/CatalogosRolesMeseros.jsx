@@ -2,8 +2,6 @@ import React from 'react';
 import Table from "@components/Table"
 import useApi from '../../../hooks/useApi';
 
-const API = "http://localhost:3001/api/waitersRoles";
-
 const columns = [
   { 
     field: 'waiterRoleId', 
@@ -19,7 +17,7 @@ const columns = [
 ]
 
 const CatalogosRolesMeseros = () => {
-  const roles = useApi(API);
+  const roles = useApi("waitersRoles");
 
   return (
     <React.Fragment>

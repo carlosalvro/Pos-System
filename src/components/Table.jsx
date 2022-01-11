@@ -1,21 +1,13 @@
 import React, {useContext} from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { AppContext } from '../context/AppContext';
-import useApiID from '../hooks/useApiID';
 
-const API = "http://localhost:3001/api";
 
 
 export default function DataGridDemo(props) {
   const {rows, columns, rowId, heigth, width, api} = props;
-  const {selectionCatalogo, setSelectionCatalogo} = useContext(AppContext);
+  const {selectedItem, setSelectedItem} = useContext(AppContext);
 
-  const bringDataFromApi = (result) => {
-    setSelectionCatalogo(result);
-    const newApi = `${API}/${api}/${result}`;
-    console.log(newApi)
-    // useApiID(newApi)
-  }
 
   return (
     <div style={{ 
@@ -33,16 +25,16 @@ export default function DataGridDemo(props) {
         // disableSelectionOnClick
         disableExtendRowFullWidth={true}
         checkboxSelection={true}
-        selectionModel={selectionCatalogo}
+        selectionModel={selectedItem}
         hideFooterSelectedRowCount
         onSelectionModelChange={(selection) => {
           if (selection.length > 1) {
-            const selectionSet = new Set(selectionCatalogo);
+            const selectionSet = new Set(selectedItem);
             const result = selection.filter((s) => !selectionSet.has(s));
 
-            bringDataFromApi(result);
+            setSelectedItem(result);
           } else {
-            setSelectionCatalogo(selection);
+            setSelectedItem(selection);
           }
         }}
       />

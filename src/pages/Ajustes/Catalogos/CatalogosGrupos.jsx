@@ -7,7 +7,6 @@ import {TextField, FormControl} from "@components/TextField"
 import {Button} from "@mui/material"
 import NewDelete from "@components/NewDelete"
 
-const API = "http://localhost:3001/api";
 
 const columns = [
   { field: 'groupId', width: 50, headerName: 'ID' },
@@ -29,10 +28,10 @@ const columns = [
 ];
 
 const CatalogosGrupos = () => {
-  const {selectionCatalogo} = useContext(AppContext);
+  const {selectedItem} = useContext(AppContext);
 
-  const groups = useApi(`${API}/groups`); 
-  const cats = useApi(`${API}/categories`)
+  const groups = useApi("groups"); 
+  const cats = useApi("categories");
   const categories = []
   cats.map(cat => (
     categories.push(cat.category)
@@ -61,6 +60,7 @@ const CatalogosGrupos = () => {
             <TextField label="Grupo" type="text"></TextField>
             <Button  color="error" variant="contained">Entrar</Button>
         </div>
+        <h1>{selectedItem[0]}</h1>
       </div>
       
     </React.Fragment>

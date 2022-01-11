@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import useApi from '../hooks/useApi';
-const API = "http://localhost:3001/api/areas"
 
 const AreasContainer = () => {
-  const areas = useApi(API)
+  const areas = useApi("areas")
   return (
     <React.Fragment>
       {areas.map(area=> (

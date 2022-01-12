@@ -1,15 +1,10 @@
-import React, {useContext} from 'react';
-import { AppContext } from '../../../context/AppContext';
+import React from 'react';
 import Table from "@components/Table"
 import useApi from '../../../hooks/useApi';
-import Select from "@components/Select"
-import {TextField, FormControl} from "@components/TextField"
-import {Button} from "@mui/material"
-import NewDelete from "@components/NewDelete"
-
+import FormGroups from "@containers/FormGroups"
 
 const columns = [
-  { field: 'groupId', width: 50, headerName: 'ID' },
+  { field: 'groupId', width: 90, headerName: 'ID' },
   {
     field: 'category',
     headerName: 'Categoria',
@@ -28,8 +23,6 @@ const columns = [
 ];
 
 const CatalogosGrupos = () => {
-  const {selectedItem} = useContext(AppContext);
-
   const groups = useApi("groups"); 
   const cats = useApi("categories");
   const categories = []
@@ -47,22 +40,14 @@ const CatalogosGrupos = () => {
           columns={columns}
           rowId={row => row.groupId}
           heigth = {400}
-          width = {300}
+          width = {350}
         />
         <div className='subcontent-form'>
-          <NewDelete/>
-          <TextField label="Id" type="number"></TextField>
-            <Select
-              id={"userId"}
-              label={"Categoria"}
-              options={categories}
-            />
-            <TextField label="Grupo" type="text"></TextField>
-            <Button  color="error" variant="contained">Entrar</Button>
+          <FormGroups
+            categories={categories}
+          />
         </div>
-        <h1>{selectedItem[0]}</h1>
       </div>
-      
     </React.Fragment>
   );
 }

@@ -4,3 +4,9 @@
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 5px;
 }
+.Form {
+  width: 100%;
+  height: 120%;
+  display: grid;
+  align-content: stretch;
+}

@@ -4,9 +4,7 @@ const useChangeTurn = () => {
   const [turn, setTurn] = useState(false);
 
   const changeTurn = () => {
-    console.log(turn)
     setTurn(!turn);
-    console.log(turn)
   }
 
   return [

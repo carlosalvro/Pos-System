@@ -1,10 +1,11 @@
 import React from 'react';
 import "@styles/ajustes/AjustesCatalogos.css"
 import { Link, Outlet } from 'react-router-dom';
+import { AjustesProvider } from '../../context/AjustesContext';
 
 const AjustesCatalogos = () => {
   return (
-    <React.Fragment>
+    <AjustesProvider>
       <div className="AjustesCatalogos">
         <div className='AjustesCatalogos-links'>
           <Link to={"/ajustes/catalogos/grupos"}>
@@ -36,7 +37,7 @@ const AjustesCatalogos = () => {
           <Outlet/>
         </div>
       </div>
-    </React.Fragment>
+    </AjustesProvider>
   );
 }
 

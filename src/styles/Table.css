@@ -1,0 +1,6 @@
+.MuiDataGrid-row:focus {
+  outline: solid #BD4020 1px;
+}
+.MuiDataGrid-cell:focus {
+  outline: none;
+}

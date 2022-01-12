@@ -10,6 +10,7 @@ const theme = createTheme({
     secondary: {
       // This is green.A700 as hex.
       main: "#EC983B",
+      contrastText: "#f1f4f9"
     },
   },
 });

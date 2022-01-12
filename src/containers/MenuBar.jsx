@@ -44,7 +44,7 @@ const buttons = [
 function MenuBar() {
   const location = useLocation()
   const actualLocation = location.pathname.split("/")[1]
-  console.log(actualLocation)
+  // console.log(actualLocation)
   const {user, userChange} = useContext(AppContext)
   const [activeMenu, setActiveMenu] = useState(actualLocation)
 

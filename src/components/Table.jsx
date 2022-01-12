@@ -1,12 +1,11 @@
 import React, {useContext} from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { AppContext } from '../context/AppContext';
-
+import { AjustesContext } from '../context/AjustesContext';
 
 
 export default function DataGridDemo(props) {
   const {rows, columns, rowId, heigth, width, api} = props;
-  const {selectedItem, setSelectedItem} = useContext(AppContext);
+  const {setSelectedItemData} = useContext(AjustesContext);
 
 
   return (
@@ -16,27 +15,16 @@ export default function DataGridDemo(props) {
       minWidth: 350 
       }}>
       <DataGrid
+        SelectionUnit="FullRow"
         rows={rows}
         columns={columns}
         getRowId={rowId}
         pageSize={5}
-        rowsPerPageOptions={[5]}
-        // checkboxSelection
-        // disableSelectionOnClick
+        rowsPerPageOptions={[50]}
         disableExtendRowFullWidth={true}
-        checkboxSelection={true}
-        selectionModel={selectedItem}
+        checkboxSelection={false}
         hideFooterSelectedRowCount
-        onSelectionModelChange={(selection) => {
-          if (selection.length > 1) {
-            const selectionSet = new Set(selectedItem);
-            const result = selection.filter((s) => !selectionSet.has(s));
-
-            setSelectedItem(result);
-          } else {
-            setSelectedItem(selection);
-          }
-        }}
+        onRowClick={row => setSelectedItemData(row.row)}
       />
     </div>
   );

@@ -14,9 +14,6 @@ const Ajustes = () => {
         <h1>Ajustes</h1>
       </div>
       <Outlet/>
-      {/* <div className='Ajustes-content'>
-        <Outlet />
-      </div> */}
     </React.Fragment>
   );
 }

@@ -25,9 +25,9 @@ const columns = [
 const CatalogosGrupos = () => {
   const groups = useApi("groups"); 
   const cats = useApi("categories");
-  const categories = []
+  const categories = {}
   cats.map(cat => (
-    categories.push(cat.category)
+    categories[cat.category] = cat.categoryId
   ))
 
   return (

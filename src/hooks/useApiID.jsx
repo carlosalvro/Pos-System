@@ -16,4 +16,16 @@ const useApiId = (id, catalogo) => {
   return data;
 };
 
-export default useApiId;
+const usePostApi = (data, id, catalogo) => {
+  const [response, setResponse] = useState();
+
+  useEffect(async () => {
+    const rta = await axios.post(`${API}/${catalogo}/${id}`, data)
+    setResponse(rta)
+    console.log(response);
+    
+  }, []);
+  return data;
+}
+
+export {useApiId, usePostApi};

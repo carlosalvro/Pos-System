@@ -6,6 +6,7 @@ function AjustesProvider(props) {
   const [disabledForm, setDisabledForm] = useState(false);
   const [formWithData, setFormWithData] = useState(false);
   const [selectedItemData, setSelectedItemData] = useState({});
+  const [updateTable, setUpdateTable] = useState(new Date());
 
   const changeFormWithData = () => {
     setFormWithData(!formWithData);
@@ -24,6 +25,8 @@ function AjustesProvider(props) {
         setFormWithData,
         selectedItemData,
         setSelectedItemData,
+        updateTable,
+        setUpdateTable,
       }}
     >
       {props.children}

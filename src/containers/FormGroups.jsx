@@ -1,38 +1,22 @@
-import React, {useContext, useEffect, useRef} from 'react';
+import React, {useContext, useState, useEffect, useRef} from 'react';
 import Select from "@components/Select"
 import {TextField} from "@components/TextField"
-import {Button} from "@mui/material"
 import NewDelete from "@components/NewDelete"
 import { AjustesContext } from '../context/AjustesContext'; 
-// import useApiId from '../hooks/useApiID';
 
+
+const dataDefault = {
+  groupId: "",
+  group: "",
+  categoryId: "",
+}
 
 
 const FormGroups = (props) => {
   const {categories} = props
-  const { 
-    selectedItemData, 
-    setSelectedItemData,
-    disabledForm, 
-    setDisabledForm ,
-    formWithData,
-    setFormWithData,
-  } = useContext(AjustesContext);
-  var data;
+  const { selectedItemData, disabledForm } = useContext(AjustesContext);
+  const [data, setData] = useState(dataDefault)
 
-  if (Object.keys(selectedItemData).length !== 0) {
-    data = {
-      id: selectedItemData.groupId,
-      group: selectedItemData.group,
-      category: selectedItemData.category.category
-    }
-  } else {
-    data = {
-      id: "",
-      group: "",
-      category: "",
-    }
-  }
 
   const firstUpdate = useRef(true);
   useEffect(() => {
@@ -40,45 +24,40 @@ const FormGroups = (props) => {
       firstUpdate.current = false
       return;
     }
-    setFormWithData(true)
-    setDisabledForm(true)
+
+    setData({
+      groupId: selectedItemData.groupId,
+      group: selectedItemData.group,
+      categoryId: selectedItemData.categoryId
+    })
+
   }, [selectedItemData])
 
-  useEffect(() => {
-    if (!formWithData) {
-      console.log("Quitando data")
-    }
-
-  })
-
-  // const handleSubmit = () => {
-  //   const formData = new FormData(form.current)
-
-  // }
   const formTemplate = (formData) => {
     const data = {
-      groupId: formData.get("id"),
       group: formData.get("group"),
       categoryId: formData.get("category")
     }
     return data;
   }
-  const clear = () => {
-
-  }
 
   return (
     <NewDelete 
-      id={formWithData ? data.id : ""} 
+      id={data.groupId} 
+      catalog = {"groups"}
+      defaultData={dataDefault}
       formTemplate={formTemplate}
     >
       <TextField 
         disabled={disabledForm}
         label="Id"
-        name="id"
         type="number"
         InputLabelProps={{ shrink: true }} 
-        value={formWithData ? data.id : clear} 
+        value={ data.groupId } 
+        onChange={(e) => {
+          setData({...data, groupId: e.target.value})
+        }}
+        helperText="Si no tienes no llenarlo"
       />
       <Select
         disabled={disabledForm}
@@ -86,7 +65,10 @@ const FormGroups = (props) => {
         label={"Categoria"}
         name={"category"}
         options={categories}
-        value={formWithData ? data.category : undefined} 
+        value={ data.categoryId } 
+        onChange={(e) => {
+          setData({...data, categoryId: e.target.value})
+        }}
       />
       <TextField 
         disabled={disabledForm}
@@ -94,7 +76,10 @@ const FormGroups = (props) => {
         name="group"
         InputLabelProps={{ shrink: true }} 
         type="text"
-        value={formWithData ? data.group : undefined} 
+        value={ data.group } 
+        onChange={(e) => {
+          setData({...data, group: e.target.value})
+        }}
       />
     </NewDelete>
   );

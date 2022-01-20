@@ -2,14 +2,13 @@ import React, {useContext, useState, useRef} from 'react';
 import { Button } from '@mui/material';
 import "@styles/NewDelete.css";
 import {AjustesContext} from "../context/AjustesContext";
-import { usePostApi } from "../hooks/useApiID";
 import axios from "axios";
 
 const API = "http://localhost:3001/api";
 
 
 const NewDelete = (props) => {
-  const {children, id, formTemplate, defaultData, catalog} = props;
+  const {children, id, formTemplate, defaultData, catalog, relations, relationFunc, rowId} = props;
   const [mode, setMode] = useState("new");
 
   const { 
@@ -18,10 +17,11 @@ const NewDelete = (props) => {
     formWithData, 
     setFormWithData, 
     setSelectedItemData,
-
+    setItemsTable,
+    setOpenAlert,
   } = useContext(AjustesContext);
 
-  function handleClick(e) {
+  async function handleClick(e) {
     switch (e) {
       case "new":
         setSelectedItemData(defaultData)
@@ -37,6 +37,27 @@ const NewDelete = (props) => {
         break
       case "delete":
         console.log(`delete id: ${id}`);
+        try {
+          const rta = await axios.delete(`${API}/${catalog}/${id}`);
+          setItemsTable(prevState => prevState.filter(x => rowId(x)!==id))
+          if (rta.status === 200){
+            setOpenAlert({
+              position: true,
+              severity: "success",
+              message: "Eliminado exitosamente"
+            })
+          }
+        } catch (error) {
+          console.log(error)
+          setOpenAlert({
+            position: true,
+            severity: "error",
+            message: "Error al eliminar item"
+          })
+        }
+        setSelectedItemData(defaultData)
+        setFormWithData(false)
+        setDisabledForm(false);
         break
     }
   }
@@ -46,11 +67,60 @@ const NewDelete = (props) => {
   const handleNewSubmit = async () => {
     const formData = new FormData(form.current)
     const data = formTemplate(formData)
-    const rta = await axios.post(`${API}/${catalog}/${id}`, data)
+    try {
+      const rta = await axios.post(`${API}/${catalog}`, data)  
+      if (relations) {
+        rta.data = relationFunc(rta.data, relations)
+      } 
+      setItemsTable((oldItems) => [...oldItems, rta.data])
+      if (rta.status === 201){
+        setOpenAlert({
+          position: true,
+          severity: "success",
+          message: "Añadido exitosamente"
+        })
+      }
+    } catch (error) {
+      console.log(error)
+      setOpenAlert({
+        position: true,
+        severity: "error",
+        message: "Ha ocurrido un error"
+      })
+    }
+    setSelectedItemData(defaultData)
+    setFormWithData(false)
   }
-  const handleEditSubmit = () => {
+  const handleEditSubmit = async () => {
     const formData = new FormData(form.current)
     const data = formTemplate(formData)
+    
+    try {
+      const rta = await axios.patch(`${API}/${catalog}/${id}`, data)  
+      if (relations) {
+        rta.data = relationFunc(rta.data, relations)
+      }
+      setItemsTable((oldItems) => oldItems.map(x => 
+        rowId(x) === id ? rta.data : x
+        ))
+      if (rta.status === 200){
+        setOpenAlert({
+          position: true,
+          severity: "success",
+          message: "Editado exitosamente"
+        })
+      }
+    } catch (error) {
+      console.log(error)
+      setOpenAlert({
+        position: true,
+        severity: "error",
+        message: "Ha ocurrido un error"
+      })
+    }
+    setSelectedItemData(defaultData)
+    setFormWithData(false)
+    setMode("new")
   }
 
   return (
@@ -74,7 +144,7 @@ const NewDelete = (props) => {
       <form className='Form' ref={form}>
         {children}
       </form>
-      <Button onClick={handleNewSubmit} variant="contained">Enviar</Button>
+      <Button onClick={(mode === "new") ? handleNewSubmit : handleEditSubmit} variant="contained">Enviar</Button>
     </React.Fragment>
   );
 }

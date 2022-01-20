@@ -4,7 +4,7 @@ import { AjustesContext } from '../context/AjustesContext';
 
 
 export default function DataGridDemo(props) {
-  const {rows, columns, rowId, heigth, width, api, key} = props;
+  const {rows, columns, rowId, heigth, width} = props;
   const {setSelectedItemData, setFormWithData, setDisabledForm } = useContext(AjustesContext);
 
 
@@ -12,7 +12,8 @@ export default function DataGridDemo(props) {
     <div style={{ 
       height: heigth, 
       width: width, 
-      minWidth: 350 
+      minWidth: 350,
+      maxWidth: 620
       }}>
       <DataGrid
         SelectionUnit="FullRow"

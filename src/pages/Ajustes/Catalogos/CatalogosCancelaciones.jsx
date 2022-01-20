@@ -1,8 +1,12 @@
 import React from 'react';
+import FormCancelaciones from "@containers/Forms/FormCancelaciones"
 
 const CatalogosCancelaciones = () => {
   return (
-    <h1>Cancelaciones</h1>
+    <React.Fragment>
+      <h1>Cancelaciones</h1>
+      <FormCancelaciones/>
+    </React.Fragment>
   );
 }
 

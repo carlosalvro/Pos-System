@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
 import Table from "@components/Table"
 import useApi from '../../../hooks/useApi';
+import FormSubgroups from "@containers/Forms/FormSubgroups";
+import {AjustesContext} from "../../../context/AjustesContext";
 
 const columns = [
   {
@@ -12,10 +14,11 @@ const columns = [
     field: 'group',
     headerName: 'Grupo',
     editable: true,
-    width: 100,
-    valueGetter: (params) => (
-      params.row.groups.group
-    )
+    width: 140,
+    valueGetter: (params) => {
+        const groupid = params.row.groups.group
+        return (groupid)
+    }
   },
   {
     field: 'subgroup',
@@ -26,19 +29,38 @@ const columns = [
 ]
 
 const CatalogosSubGrupos = () => {
+  const {itemsTable, setItemsTable} = useContext(AjustesContext);
 
   const subgroups = useApi("subgroups"); 
+  const groupsObj = useApi("groups");
+  const groups = {}
+  groupsObj.map(group => (
+    groups[group.groupId] = group.group
+  ))
+
+  useEffect(() => {
+    setItemsTable(subgroups)
+  }, [subgroups])
 
   return (
     <React.Fragment >
+      {console.log(itemsTable)}
       <h1>SubGrupos</h1>
-      <Table 
-        rows={subgroups}
-        columns={columns}
-        rowId = {row => row.subgroupId}
-        heigth = {400}
-        width = {350}
-      />
+      <div className='AjustesCatalogos-subcontent'>
+        <Table 
+          rows={itemsTable}
+          relations={{groups}}
+          columns={columns}
+          rowId={row => row.subgroupId}
+          heigth = {400}
+          width = {350}
+        />
+        <div className='subcontent-form'>
+          <FormSubgroups
+            groups={groups}
+          />
+        </div>
+      </div>
     </React.Fragment>
   );
 }

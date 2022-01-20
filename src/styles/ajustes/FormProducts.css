@@ -1,0 +1,34 @@
+.FormProducts {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 30% 20% 50%;
+  column-gap: 5px;
+}
+.id {
+  grid-column: 1 / 2;
+}
+.category {
+  grid-column: 2 / 4;
+}
+.group {
+  grid-column: 1 / 3;
+}
+.subgroup {
+  grid-column: 3 / 4;
+}
+.product{
+  grid-column: 1 / 4;
+}
+.price {
+  grid-column: 1 / 3;
+}
+.shortName {
+  grid-column: 3 / 4;
+}
+.openPrice {
+  grid-column: 1 / 4;
+}
+.active {
+  grid-column: 1 / 4;
+}

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
 import Table from "@components/Table"
 import useApi from '../../../hooks/useApi';
-
-const API = "http://localhost:3001/api/";
+import FormProducts from '@containers/Forms/FormProducts';
+import {AjustesContext} from "../../../context/AjustesContext";
 
 const currencyFormatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -18,7 +18,6 @@ const columns = [
   {
     field: 'category',
     headerName: 'Categoria',
-    editable: true,
     width: 100,
     valueGetter: (params) => (
       params.row.category.category
@@ -27,20 +26,26 @@ const columns = [
   {
     field: 'group',
     headerName: 'Grupo',
-    editable: true,
     width: 100,
-    valueGetter: (params) => (
-      params.row.groups.group
-    )
+    valueGetter: (params) => {
+      try {
+        return (params.row.groups.group)
+      } catch (error) {
+        return null
+      }
+    }
   },
   {
     field: 'subgroup',
     headerName: 'Subgrupo',
-    editable: true,
     width: 100,
-    valueGetter: (params) => (
-      params.row.subgroups.subgroup
-    )
+    valueGetter: (params) => {
+      try {
+        return (params.row.subgroups.subgroup)
+      } catch (error) {
+        return null
+      }
+    }
   },
   { 
     field: 'productName', 
@@ -84,18 +89,53 @@ const columns = [
 ]
 
 const CatalogosProductos = () => {
+  const {itemsTable, setItemsTable} = useContext(AjustesContext);
+
   const products = useApi("products");
+
+  const cats = useApi("categories");
+  const categories = {}
+  cats.map(cat => (
+    categories[cat.categoryId] = cat.category
+  ))
+
+  const grupo = useApi("groups");
+  const groups = {}
+  grupo.map(group => (
+    groups[group.groupId] = group.group
+  ))
+
+  const subgrupo = useApi("subgroups");
+  const subgroups = {}
+  subgrupo.map(subgroup => (
+    subgroups[subgroup.subgroupId] = subgroup.subgroup
+  ))
+
+  useEffect(()=>{
+    setItemsTable(products)
+  }, [products])
+
+
   return (
     <React.Fragment>
       <h1>Productos</h1>
-      <Table
-        rows={products}
-        columns={columns}
-        rowId={row => row.productId}
-        heigth = {400}
-        width = {"100%"}
-      />
-
+      <div className='AjustesCatalogos-subcontent'>
+        <Table
+          rows={itemsTable}
+          relations={{categories, groups, subgroups}}
+          columns={columns}
+          rowId={row => row.productId}
+          heigth = {400}
+          width = {"100%"}
+        /> 
+        <div className='subcontent-form'>
+          <FormProducts
+            categories={categories}
+            groups={groups}
+            subgroups={subgroups}
+          />
+        </div>
+      </div>
     </React.Fragment>
   );
 }

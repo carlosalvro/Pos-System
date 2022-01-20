@@ -1,12 +1,13 @@
-import React, {useState} from 'react';
+import React from 'react';
 import NavigationAjustes from "../../components/NavigationAjustes"
 import "@styles/ajustes/Ajustes.css"
 import {Outlet} from "react-router-dom";
+import { AjustesProvider } from '../../context/AjustesContext';
 
 const Ajustes = () => {
 
   return (
-    <React.Fragment>
+    <AjustesProvider>
       <div className='Ajustes-links'>
         <NavigationAjustes/>
       </div>
@@ -14,7 +15,7 @@ const Ajustes = () => {
         <h1>Ajustes</h1>
       </div>
       <Outlet/>
-    </React.Fragment>
+    </AjustesProvider>
   );
 }
 

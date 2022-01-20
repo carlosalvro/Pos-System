@@ -1,9 +1,8 @@
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
 import Table from "@components/Table"
 import useApi from '../../../hooks/useApi';
-import TableAlter from '../../../components/TableAlter';
-
-const API = "http://localhost:3001/api/";
+import FormClients from "@containers/Forms/FormClients";
+import {AjustesContext} from "../../../context/AjustesContext";
 
 const columns = [
   {
@@ -50,19 +49,29 @@ const columns = [
 ]
 
 const CatalogosClientes = () => {
+  const {itemsTable, setItemsTable} = useContext(AjustesContext);
 
   const clients = useApi("clients");
+
+  useEffect(()=>{
+    setItemsTable(clients)
+  }, [clients])
+
   return (
     <React.Fragment>
       <h1>Clientes</h1>
-      <Table
-        rows={clients}
-        columns={columns}
-        rowId={row => row.clientId}
-        heigth = {400}
-        width = {"100%"}
-      />
-      {/* <TableAlter/> */}
+      <div className='AjustesCatalogos-subcontent'>
+        <Table
+          rows={itemsTable}
+          columns={columns}
+          rowId={row => row.clientId}
+          heigth = {400}
+          width = {"100%"}
+        />
+        <div className='subcontent-form'>
+          <FormClients/>
+        </div>
+      </div>
     </React.Fragment>
 
   );

@@ -12,6 +12,11 @@ const theme = createTheme({
       main: "#EC983B",
       contrastText: "#f1f4f9"
     },
+    deactivate: {
+      // This is green.A700 as hex.
+      main: "#CCBBBB",
+      contrastText: "#443734"
+    },
   },
 });
 

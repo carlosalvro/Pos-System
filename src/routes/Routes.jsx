@@ -15,6 +15,10 @@ import CatalogosMeseros from '../pages/Ajustes/Catalogos/CatalogosMeseros';
 import CatalogosClientes from '../pages/Ajustes/Catalogos/CatalogosClientes'; 
 import CatalogosProductos from '../pages/Ajustes/Catalogos/CatalogosProductos'; 
 import CatalogosCancelaciones from '../pages/Ajustes/Catalogos/CatalogosCancelaciones'; 
+import Comedor from "../pages/Home/Comedor"
+import Llevar from "../pages/Home/Llevar"
+import Domicilio from "../pages/Home/Domicilio"
+import Apps from "../pages/Home/Apps"
 
 import '../styles/App.css'
 
@@ -23,7 +27,12 @@ const App = (props) => {
 
   return (
     <Routes>
-      <Route exact path="/home" element={<Home/>}/>
+      <Route exact path="/home" element={<Home/>}>
+        <Route exact path="comedor" element={<Comedor/>}/>
+        <Route exact path="llevar" element={<Llevar/>}/>
+        <Route exact path="apps" element={<Apps/>}/>
+        <Route exact path="domicilio" element={<Domicilio/>}/>
+      </Route>
       <Route exact path="/cuentas" element={<Cuentas/>}/>
       <Route exact path="/ventas" element={<Ventas/>}/>
       <Route exact path="/corte" element={<Corte/>}/>

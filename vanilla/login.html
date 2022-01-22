@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <title>Document</title>
+  <style>
+    :root {
+      --yellow: #EC983B;
+      --red: #E31C1B;
+      --dark: #443734;
+      --light: #717e8a;
+      --green: #6ab547;
+      --white: #f1f4f9;
+      --palido: #ccbbbb;
+      --alt-red: #bd4020;
+      --yellow-light: #ffc88a;
+      --background-palido: rgba(204, 187, 187, 0.5);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-size: 62.5%;
+      font-family: 'Balsamiq Sans', cursive;
+      background-color: var(--white);
+    }
+    .button {
+      border-radius: 9px;
+      width: 100%;
+      border: none;
+      background-color: var(--yellow);
+      font-family: 'Balsamiq Sans', cursive;
+      font-size: 1rem;
+      text-decoration: none;
+      display: grid;
+      place-items: center;
+      color: black;
+    }
+    .login {
+      width: 100%;
+      height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      place-items: center;
+      /* align-content: center; */
+    }
+    .form-side {
+      grid-column: 1 / 2;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      /* justify-content: center; */
+      place-items: center;
+      align-content: center;
+    }
+    .form {
+      width: 70%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .waiter-password {
+      border-radius: 9px;
+      border: none;
+      background-color: var(--palido);
+      height: 40px;
+      margin: 10px 0;
+      text-align: center;
+      color: black;
+    }
+    ::placeholder {
+      color: black;
+      font-family: 'Balsamiq Sans', cursive;
+      font-size: 1.3rem;
+    }
+    .button-loggin {
+      height: 40px;
+      font-size: 1.3rem;
+    }
+    .num-keyboard {
+      grid-column: 2/3;
+      width: 80%;
+      height: 70%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      gap: 5px 5px;
+      background-color: var(--background-palido);
+      padding: 9px;
+      border-radius: 9px;
+    }
+    .num-keyboard .key-button-0 {
+      grid-column: 1 /4;
+      grid-row: 4 / 5;
+    }
+  </style>
+</head>
+<body>
+  <div class="login">
+    <div class="form-side">
+      <img src="./icons/waiter.png" alt="waiter">
+      <form action="/" class="form">
+        <input type="password" class="waiter-password" placeholder="Contraseña">
+        <a href="./main-page-comedor.html" class="button button-loggin">Entrar</a>
+      </form>
+    </div>
+    <div class="num-keyboard">
+      <button class="button key-button">1</button>
+      <button class="button key-button">2</button>
+      <button class="button key-button">3</button>
+      <button class="button key-button">4</button>
+      <button class="button key-button">5</button>
+      <button class="button key-button">6</button>
+      <button class="button key-button">7</button>
+      <button class="button key-button">8</button>
+      <button class="button key-button">9</button>
+      <button class="button key-button-0">0</button>
+    </div>
+  </div>
+</body>
+</html>

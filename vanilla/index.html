@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <title>Document</title>
+  <style>
+    :root {
+      --yellow: #EC983B;
+      --red: #E31C1B;
+      --dark: #443734;
+      --light: #717e8a;
+      --green: #6ab547;
+      --white: #f1f4f9;
+      --palido: #ccbbbb;
+      --alt-red: #bd4020;
+      --yellow-light: #ffc88a;
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-size: 62.5%;
+      font-family: 'Balsamiq Sans', cursive;
+      background-color: var(--white);
+    }
+    .add-products {
+      /* font-size: 1.8rem; */
+      width: 100%;
+      height: 100vh;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      place-items: center;
+    }
+    .left-side {
+      width: 90%;
+      height: 100%;
+      grid-column: 1 / 3;
+      display: grid;
+      grid-template-rows: repeat(9, 1fr);
+      justify-items: center;
+    }
+    .right-side {
+      width: 100%;
+      height: 100%;
+      grid-column: 3 / 6;
+      display: grid;
+      grid-template-rows: repeat(9, 1fr);
+      justify-items: center;
+    }
+    .table {
+      align-self: end;
+      grid-row: 1 / 2;
+      margin: 0px 0;
+      font-size: 3rem;
+      /* vertical-align: middle; */
+    }
+    .products-list {
+      width: 100%;
+      grid-row: 2 / 8;
+      border: solid black;
+    }
+    .button {
+      border-radius: 9px;
+      width: 100%;
+      border: none;
+      background-color: var(--yellow);
+      font-family: 'Balsamiq Sans', cursive;
+      font-size: 1rem;
+    }
+    .buttons-section {
+      display: flex;
+      width: 100%;
+      grid-row: 8 / 9;
+      justify-content: space-around;
+    }
+    .buttons-section button {
+      color: white;
+    }
+    .borrar-todo {
+      background-color: var(--alt-red);
+    }
+    .borrar {
+      background-color: var(--green);
+    }
+    .left-side-footer {
+      grid-row: 9/10;
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .left-side-footer p {
+      margin: 0;
+      font-size: 3.0rem;
+    }
+    .categories {
+      width: 100%;
+      grid-row: 1 / 2;
+      display: flex;
+    }
+    .categories .active {
+      background-color: var(--red);
+    }
+    .groups  {
+      width: 100%;
+      grid-row: 2 / 4;
+      background-color: rgba(204, 187, 187, 0.5);
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      border-radius: 9px;
+      margin: 3px 0;
+      gap: 5px 5px;
+      padding: 5px;
+    }
+    .products {
+      width: 100%;
+      grid-row: 4 / 7;
+      background-color: rgba(204, 187, 187, 0.5);
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      border-radius: 9px;
+      margin: 3px 0;
+      gap: 5px 5px;
+      padding: 5px;
+    }
+    .comments {
+      width: 100%;
+      grid-row: 7 / 9;
+      background-color: rgba(204, 187, 187, 0.5);
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      border-radius: 9px;
+      margin: 3px 0;
+      gap: 5px 5px;
+      padding: 5px;
+    }
+    .right-side-footer{
+      grid-row: 9/10;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      width: 100%;
+      justify-items: center;
+    }
+    .right-side-footer button {
+      color: white;
+      width: 95%;
+    }
+    .close-button {
+      grid-column: 1/2;
+      background-color: var(--alt-red);
+    }
+    .ok-button {
+      grid-column: 2/3;
+      background-color: var(--green);
+    }
+    .number-products {
+      grid-column: 3 / 5;
+      width: 90%;
+      border-radius: 15px;
+      border: none;
+      background-color: var(--light);
+      color: white;
+      font-family: 'Balsamiq Sans', cursive;
+      margin: 5px;
+      text-align: center;
+      font-size: 2rem;
+    }
+    .minus-button {
+      grid-column: 5/6;
+      background-color: var(--alt-red);
+    }
+    .plus-button {
+      grid-column: 6/7;
+      background-color: var(--green);
+    }
+    .back-button {
+      grid-column: 1/2;
+      grid-row: 1/2;
+    }
+    .next-button {
+      grid-column: 5/6;
+      grid-row: 2/3;
+    }
+    .products .next-button {
+      grid-row: 3 / 4;
+    }
+    .comments .write-comment {
+      grid-row: 1 / 2;
+      grid-column: 1 / 2;
+      background-color: var(--light);
+      color: white;
+    }
+    .comments .back-button {
+      grid-row: 1 / 2;
+      grid-column: 2 / 3;
+    }
+  </style>
+</head>
+<body>
+  <div class="add-products">
+    <section class="left-side">
+      <h1 class="table">A1</h1>
+      <div class="products-list">
+        Acá van los productos
+      </div>
+      <div class="buttons-section">
+        <button class="button borrar-todo" >Borrar todo</button>
+        <button class="button borrar" >Borrar</button>
+        <button class="button separador" >Separador <br> ---------</button>
+      </div>
+      <div class="left-side-footer">
+        <p class="waiter">Carlos</p>
+        <p class="total">$0.00</p>
+      </div>
+    </section>
+    <section class="right-side">
+      <div class="categories">
+        <button class="button active">Comida</button>
+        <button class="button">Bebida</button>
+        <button class="button">Otros</button>
+        <button class="button">Repetir</button>
+      </div>
+      <div class="groups">
+        <button class="button back-button">
+          <img src="./icons/back-arrow.svg" alt="back-arrow">
+        </button>
+        <button class="button next-button">
+          <img src="./icons/next-arrow.svg" alt="next-arrow">
+        </button>
+      </div>
+      <div class="products">
+        <button class="button back-button">
+          <img src="./icons/back-arrow.svg" alt="back-arrow">
+        </button>
+        <button class="button next-button">
+          <img src="./icons/next-arrow.svg" alt="next-arrow">
+        </button>
+      </div>
+      <div class="comments">
+        <button class="button write-comment">Escrito</button>
+        <button class="button back-button">
+          <img src="./icons/back-arrow.svg" alt="back-arrow">
+        </button>
+        <button class="button next-button">
+          <img src="./icons/next-arrow.svg" alt="next-arrow">
+        </button>
+      </div>
+      <div class="right-side-footer">
+        <button class="button close-button">Cerrar</button>
+        <button class="button ok-button">Aceptar</button>
+        <input type="number" value="1.0" class="number-products">
+        <button class="button minus-button">-</button>
+        <button class="button plus-button">+</button>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <title>Document</title>
+  <style>
+    :root {
+      --yellow: #EC983B;
+      --red: #E31C1B;
+      --dark: #443734;
+      --light: #717e8a;
+      --green: #6ab547;
+      --white: #f1f4f9;
+      --palido: #ccbbbb;
+      --alt-red: #bd4020;
+      --yellow-light: #ffc88a;
+      --background-palido: rgba(204, 187, 187, 0.5);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-size: 62.5%;
+      font-family: 'Balsamiq Sans', cursive;
+      background-color: var(--white);
+    }
+    .button {
+      border-radius: 9px;
+      /* width: 100%; */
+      border: none;
+      background-color: var(--yellow);
+      font-family: 'Balsamiq Sans', cursive;
+      font-size: 1rem;
+    }
+    .new-table {
+      display: grid;
+      place-items: center;
+      grid-template-columns: 1fr 1fr;
+      height: 100vh;
+    }
+    .new-table section {
+      height: 70%;
+    }
+    .inputs {
+      width: 90%;
+      grid-column: 1 / 2;
+      display: grid;
+      place-items: center;
+    }
+    .form {
+      width: 100%;
+      height: 80%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+    }
+    .form-labels {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-between;
+      margin-right: 5px;
+    }
+    .label {
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+    .form-inputs {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      width: 60%;
+      justify-content: space-between;
+    }
+    .form-inputs input {
+      border-radius: 10px;
+      border: none;
+      background-color: var(--palido);
+      min-height: 30px;
+      text-align: center;
+      font-family: 'Balsamiq Sans', cursive;
+      /* margin: 3px 0px; */
+    }
+    .input-personas {
+      display: grid;
+      grid-template-columns: 50% 20% 20%;
+      column-gap: 5%;
+    }
+    .minus-button {
+      color: var(--white);
+      background-color: var(--alt-red);
+    }
+    .plus-button {
+      color: var(--white);
+      background-color: var(--green);
+    }
+    .main-buttons {
+      /* margin-top: 10px; */
+      display: flex;
+      width: 100%;
+      height: 50%;
+      justify-content: space-between;
+    }
+    .main-buttons button, a {
+      width: 48%;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    .close-button {
+      color: var(--white);
+      background-color: var(--alt-red);
+      text-decoration: none;
+      display: grid;
+      place-items: center;
+    }
+    .ok-button {
+      color: var(--white);
+      background-color: var(--green);
+    }
+
+    .num-keyboard {
+      grid-column: 2/3;
+      width: 80%;
+      /* height: 70%; */
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(5, 1fr);
+      gap: 5px 5px;
+      background-color: var(--background-palido);
+      padding: 9px;
+      border-radius: 9px;
+    }
+    .num-keyboard .key-button-0 {
+      grid-column: 1 /3;
+      grid-row: 5 / 6;
+    }
+    .num-keyboard button {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="new-table">
+    <section class="inputs">
+      <form action="/" class="form">
+        <div class="form-labels">
+          <label for="area" class="label">Area</label>
+          <label for="mesa" class="label">Mesa</label>
+          <label for="mesero" class="label">Mesero</label>
+          <label for="personas" class="label">Personas</label>
+        </div>
+        <div class="form-inputs">
+          <input type="text" id="area" class="input">
+          <input type="text" id="mesa" class="input">
+          <input type="text" id="mesero" class="input">
+          <div class="input-personas">
+            <input type="number" id="personas" class="input">
+            <button class="button minus-button">-</button>
+            <button class="button plus-button">+</button>
+          </div>
+        </div>
+      </form>
+      <div class="main-buttons">
+        <a href="./main-page-comedor.html" class="button close-button">Cerrar</a>
+        <button class="button ok-button">Aceptar</button>
+      </div>
+    </section>
+    <section class="num-keyboard">
+      <button class="button key-button">A</button>
+      <button class="button key-button">B</button>
+      <button class="button key-button">C</button>
+      <button class="button key-button">1</button>
+      <button class="button key-button">2</button>
+      <button class="button key-button">3</button>
+      <button class="button key-button">4</button>
+      <button class="button key-button">5</button>
+      <button class="button key-button">6</button>
+      <button class="button key-button">7</button>
+      <button class="button key-button">8</button>
+      <button class="button key-button">9</button>
+      <button class="button key-button-0">0</button>
+      <button class="button key-button">-</button>
+    </section>
+  </div>
+</body>
+</html>

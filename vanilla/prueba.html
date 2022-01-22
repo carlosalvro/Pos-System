@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <title>Document</title>
+  <style>
+    :root {
+      --yellow: #EC983B;
+      --red: #E31C1B;
+      --dark: #443734;
+      --light: #717e8a;
+      --green: #6ab547;
+      --white: #f1f4f9;
+      --palido: #ccbbbb;
+      --alt-red: #bd4020;
+      --yellow-light: #ffc88a;
+      --background-palido: rgba(204, 187, 187, 0.5);
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      height: 100%;
+      width: 100%;
+    }
+    body {
+      height: 100%;
+      width: 100%;
+      display: grid;
+      align-content: center;
+    }
+    .main-page {
+      width: 95%;
+      height: 95%;
+      display: grid;
+      grid-template-rows: 50px 50px auto;
+      justify-content: center;
+      row-gap: 10px;
+    }
+    .header {
+      width: 100%;
+      grid-row: 1 / 2;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+    }
+    .header h1 {
+      justify-self: center;
+      grid-column: 2/3;
+    }
+    .header img {
+      justify-self: flex-end;
+      grid-column: 3/4;
+    }
+    .categories-buttons {
+      width: 100%;
+      grid-row: 2/3;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .button {
+      min-width: 150px;
+    }
+  </style>
+</head>
+<body>
+  <div class="main-page">
+    <header class="header">
+      <h1 class="waiter-name">Carlos</h1>
+      <img src="./icons/exit.svg" alt="exit-button">
+    </header>
+    <nav class="categories-buttons">
+      <button class="button active">Comedor</button>
+      <button class="button ">Llevar</button>
+      <button class="button ">Apps</button>
+    </nav>
+    <section class="cards-section">
+      <div class="card new-card"><p class="card-title">+</p></div>
+      <div class="card"><p class="card-title">A1</p></div>
+      <div class="card"><p class="card-title">A1</p></div>
+      <div class="card"><p class="card-title">A1</p></div>
+      <div class="card"><p class="card-title">A1</p></div>
+      <div class="card"><p class="card-title">A1</p></div>
+      <div class="card"><p class="card-title">A1</p></div>
+      <div class="card"><p class="card-title">A1</p></div>
+      <div class="card"><p class="card-title">A1</p></div>
+      <div class="card"><p class="card-title">A1</p></div>
+      <div class="card"><p class="card-title">A1</p></div>
+      <div class="card"><p class="card-title">A1</p></div>
+      <div class="card"><p class="card-title">A1</p></div>
+      <div class="card"><p class="card-title">A1</p></div>
+      <div class="card"><p class="card-title">A1</p></div>
+      <div class="card"><p class="card-title">A1</p></div>
+    </section>
+  </div>
+</body>
+</html>

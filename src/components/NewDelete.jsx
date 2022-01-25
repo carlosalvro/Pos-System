@@ -2,6 +2,7 @@ import React, {useContext, useState, useRef} from 'react';
 import { Button } from '@mui/material';
 import "@styles/NewDelete.css";
 import {AjustesContext} from "../context/AjustesContext";
+import {AppContext} from "../context/AppContext";
 import axios from "axios";
 
 const API = "http://localhost:3001/api";
@@ -18,8 +19,8 @@ const NewDelete = (props) => {
     setFormWithData, 
     setSelectedItemData,
     setItemsTable,
-    setOpenAlert,
   } = useContext(AjustesContext);
+  const {setOpenAlert} = useContext(AppContext);
 
   async function handleClick(e) {
     switch (e) {

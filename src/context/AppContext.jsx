@@ -6,6 +6,11 @@ const AppContext = React.createContext();
 function AppProvider(props) {
   const [user, userChange] = useUserValidation();
   const [turn ,changeTurn] = useChangeTurn();
+  const [openAlert, setOpenAlert] = React.useState({
+    position: false,
+    severity: "success",
+    message: "Default Message"
+  });
 
   return (
     <AppContext.Provider value={{
@@ -13,6 +18,8 @@ function AppProvider(props) {
       userChange,
       turn,
       changeTurn,
+      openAlert,
+      setOpenAlert
     }}>
       {props.children}
     </AppContext.Provider>

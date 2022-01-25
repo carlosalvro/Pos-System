@@ -11,11 +11,7 @@ function AjustesProvider(props) {
   const [groups, setGroups] = useState([]);
   const [subgroups, setSubgroups] = useState([]);
 
-  const [openAlert, setOpenAlert] = React.useState({
-    position: false,
-    severity: "success",
-    message: "Default Message"
-  });
+  
 
 
 
@@ -30,8 +26,6 @@ function AjustesProvider(props) {
         setSelectedItemData,
         itemsTable,
         setItemsTable,
-        openAlert, 
-        setOpenAlert,
         groups,
         setGroups,
         subgroups,

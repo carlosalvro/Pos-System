@@ -5,17 +5,17 @@ import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { Button } from '@mui/material';
-import useApi from '../hooks/useApi';
+import useApi from '../../hooks/useApi';
 import axios from "axios";
 import "@styles/Home/NewOrder.css";
-import { AppContext } from '../context/AppContext';
-import errorMessage from '../hooks/useAlertError';
+import { AppContext } from '../../context/AppContext';
+import errorMessage from '../../hooks/useAlertError';
 
 const API = "http://localhost:3001/api";
 
 
 const NewOrder = (props) => {
-  const {setOpenAlert} = useContext(AppContext);
+  const {setOpenAlert, setOpenNewProductPage} = useContext(AppContext);
   const {open, setOpen, activeArea, setActiveArea } = props; 
   const areas = useApi("areas");
   const waiters = useApi("waiters");
@@ -54,6 +54,7 @@ const NewOrder = (props) => {
       .then(response => {
         setOpen(false)
         console.log(response)
+        setOpenNewProductPage(true)
       })
       .catch(error => {
         console.log(error.response)

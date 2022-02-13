@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import useChangeTurn from "../hooks/useChangeTurn";
 import useUserValidation from '../hooks/useUserValidation';
 const AppContext = React.createContext();
@@ -6,6 +6,7 @@ const AppContext = React.createContext();
 function AppProvider(props) {
   const [user, userChange] = useUserValidation();
   const [turn ,changeTurn] = useChangeTurn();
+  const [openNewProductPage, setOpenNewProductPage] = useState(true)
   const [openAlert, setOpenAlert] = React.useState({
     position: false,
     severity: "success",
@@ -19,7 +20,9 @@ function AppProvider(props) {
       turn,
       changeTurn,
       openAlert,
-      setOpenAlert
+      setOpenAlert,
+      openNewProductPage,
+      setOpenNewProductPage
     }}>
       {props.children}
     </AppContext.Provider>
